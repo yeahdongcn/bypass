@@ -1,25 +1,26 @@
 Pod::Spec.new do |s|
-  s.name = 'Bypass'
-  s.version = '1.0.1'
-  s.license = 'Apache License, Version 2.0'
-  s.summary = 'Bypass - Bypass renders markdown directly to UIViews instead of using an intermediary HTML format.'
-  s.homepage = 'http://uncodin.github.io/bypass/'
-  s.authors = {
-    'Damian Carrillo' => 'damian@uncod.in',
-    'Colin Edwards' => 'colin@uncod.in'
-  }
-  s.platform = :ios, '6.0'
-  s.ios.frameworks = 'Foundation', 'UIKit', 'QuartzCore', 'CoreGraphics', 'CoreText'
-  s.ios.requires_arc = true
-  s.xcconfig = { 'OTHER_LDFLAGS' => '-lstdc++' }
-  s.compiler_flags = '-stdlib=libc++'
-  s.source = {
-    :git => 'https://github.com/Uncodin/bypass-ios.git',
-    :tag => '1.0.1',
-    :submodules => true
-  }
-  s.source_files =
-    'Bypass/*.{h,m,mm}',
-    'Libraries/bypass-core/src/*.{h,cpp}',
-    'Libraries/bypass-core/src/soldout/*.{h,c}'
+  s.name         = "Bypass"
+  s.version      = "1.0"
+  s.summary      = "Skip the HTML, Bypass takes markdown and renders it directly on Android and iOS."
+  s.homepage     = "http://uncodin.github.com/bypass/"
+
+  s.license      = 'Apache License, Version 2.0'
+
+  s.authors      = { "Colin Edwards" => "colin@recursivepenguin.com", "Damian Carrillo" => "dcarrillo@ironclad.mobi" }
+  s.source       = { :git => "https://github.com/Uncodin/bypass.git", :tag => "cocoapods1.0" }
+
+  s.platform     = :ios
+
+  s.source_files = 'dep/libsoldout/markdown.{h,c}',
+		   'dep/libsoldout/buffer.{h,c}',
+		   'dep/libsoldout/array.{h,c}',
+		   'src/*.{h,cpp}',
+		   'platform/ios/Bypass/Bypass/*.{h,mm,pch}',
+
+  s.public_header_files = 'platform/ios/Bypass/Bypass/*.h'
+
+  s.frameworks = "CoreText", "Foundation", "UIKit"
+
+  s.dependency 'boost/string_algorithms-includes'
+  s.requires_arc = false
 end
